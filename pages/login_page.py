@@ -1,9 +1,12 @@
+from urllib.parse import urlparse, urlunparse
+
 from .base_page import BasePage
 from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
+        # проверка login page по нескольким параметрам
         check_func_arr = [
             self.should_be_login_url, 
             self.should_be_login_form,
@@ -16,12 +19,22 @@ class LoginPage(BasePage):
         return True, ""
 
     def should_be_login_url(self):
-        # реализуйте проверку на корректный url адрес
-        return LoginPageLocators.LOGIN_URL in self.browser.current_url,  "Login URL not presented"
+        # проверка корректности url адреса
+        result = LoginPageLocators.page_name in self.browser.current_url
+        false_msg = "Login URL not presented"
+        return result, false_msg 
+        
 
     def should_be_login_form(self):
-        return self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login Form not presented"
+        # существует форма логина на странице?
+        result = self.is_element_present(*LoginPageLocators.LOGIN_FORM)
+        false_msg = "Login Form not presented"
+        return result, false_msg
                 
 
     def should_be_register_form(self):
-        return self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Register Form not presented"
+        # существует форма регистрации на странице?
+        result = self.is_element_present(*LoginPageLocators.REGISTER_FORM)
+        false_msg = "Register Form not presented"
+        return result, false_msg 
+    
