@@ -4,13 +4,20 @@ from .locators import LoginPageLocators
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
-        self.should_be_login_url()
-        self.should_be_login_form()
-        self.should_be_register_form()
+        check_func_arr = [
+            self.should_be_login_url, 
+            self.should_be_login_form,
+            self.should_be_register_form
+        ]
+        for check_func in check_func_arr:
+            result, msg = check_func()
+            if not result:
+                return False, f"It is not Login Page, becouse: {msg}"
+        return True, ""
 
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        assert "login" in self.browser.current_url,  "Login URL not presented"
+        return LoginPageLocators.LOGIN_URL in self.browser.current_url,  "Login URL not presented"
 
     def should_be_login_form(self):
         return self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login Form not presented"

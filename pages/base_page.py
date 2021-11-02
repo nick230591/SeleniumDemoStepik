@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException
 
 class BasePage():
-    def __init__(self, browser, url, timeout=10) -> None:
+    def __init__(self, browser, url, timeout=2) -> None:
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -11,7 +11,8 @@ class BasePage():
     
     def is_element_present(self, how, what) -> bool:
         try:
-            print(self.browser.find_element(how, what))
+            self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
         return True
+    
