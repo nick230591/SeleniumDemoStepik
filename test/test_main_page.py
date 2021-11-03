@@ -1,7 +1,7 @@
-from pages.login_page import LoginPage
-from pages.main_page import MainPage
-from pages.login_page import LoginPage
-from pages.locators import MainPageLocators
+from src.pages.login_page import LoginPage
+from src.pages.main_page import MainPage
+from src.pages.login_page import LoginPage
+from src.pages.locators import MainPageLocators
 
 def test_guest_can_go_to_login_page(browser):
     link = MainPageLocators.MAIN_URL

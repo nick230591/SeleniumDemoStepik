@@ -1,8 +1,8 @@
 import pytest
 import time
 
-from pages.product_page import ProductPage
-from pages.locators import ProductPageLocators
+from src.pages.product_page import ProductPage
+from src.pages.locators import ProductPageLocators
 
 product_base_link = ProductPageLocators.PRODUCT_PAGE_URL
 urls = [f'{product_base_link}/?promo=offer{num}' for num in range(10)]
@@ -15,3 +15,5 @@ def test_guest_can_add_product_to_basket(browser, link):
 
     assert page.should_be_add_to_cart_msg().text == page.should_be_selected_product_name().text
     assert page.should_be_cart_price_msg().text == page.should_be_selected_product_price().text
+
+
