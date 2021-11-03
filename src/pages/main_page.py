@@ -9,6 +9,6 @@ class MainPage(BasePage):
 
     def should_be_login_link(self):
         # существует ссылка на страницу с логином?
-        result = self.is_element_present(*MainPageLocators.LOGIN_LINK)
+        result = self.is_element_present(MainPageLocators.LOGIN_LINK)
         false_msg = "Login link not presented"
         return result, false_msg

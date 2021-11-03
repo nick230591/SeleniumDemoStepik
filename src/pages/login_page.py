@@ -27,14 +27,14 @@ class LoginPage(BasePage):
 
     def should_be_login_form(self):
         # существует форма логина на странице?
-        result = self.is_element_present(*LoginPageLocators.LOGIN_FORM)
+        result = self.is_element_present(LoginPageLocators.LOGIN_FORM)
         false_msg = "Login Form not presented"
         return result, false_msg
                 
 
     def should_be_register_form(self):
         # существует форма регистрации на странице?
-        result = self.is_element_present(*LoginPageLocators.REGISTER_FORM)
+        result = self.is_element_present(LoginPageLocators.REGISTER_FORM)
         false_msg = "Register Form not presented"
         return result, false_msg 
     
